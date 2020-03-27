@@ -68,7 +68,7 @@ with tf.variable_scope('fc3'):
     b_fc3 = tf.get_variable('bias', [10], initializer=tf.constant_initializer(0.1))
     y = tf.matmul(fc2, w_fc3) + b_fc3
 
-cross_entropy = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits_v2(logits=y, labels=y_))
+cross_entropy = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(logits=y, labels=y_))
 correct_prediction = tf.equal(tf.argmax(y, 1), tf.argmax(y_, 1))
 accuracy = tf.reduce_mean(tf.cast(correct_prediction, tf.float32))
 with tf.name_scope('losses'):
